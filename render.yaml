@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: member-messenger-api
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    disk:
+      name: member-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DB_FILE
+        value: /var/data/member-data.json
+      - key: CLIENT_ORIGIN
+        value: "*"

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Member — Messenger</title><link rel="stylesheet" href="style.css"><script src="config.js"></script>
+</head><body>
+<div class="auth-screen" id="authScreen">
+ <div class="auth-card"><div class="logo">M</div><div class="eyebrow">YOUR SPACE. YOUR PEOPLE.</div><h1>Member</h1><p class="muted">Твои разговоры — в одном месте.</p>
+ <div class="auth-tabs"><button class="auth-tab active" data-auth="login">Войти</button><button class="auth-tab" data-auth="register">Создать аккаунт</button></div>
+ <form id="authForm"><label>Имя пользователя<input id="authUsername" placeholder="например, alexmorgan" autocomplete="username" required></label><label id="displayNameWrap" class="hidden">Отображаемое имя<input id="authDisplayName" placeholder="Как тебя зовут?" autocomplete="name"></label><label>Пароль<input id="authPassword" type="password" placeholder="Минимум 8 символов" autocomplete="current-password" required minlength="8"></label><button class="primary full" type="submit" id="authSubmit">Войти в Member <span>→</span></button></form>
+ <div class="auth-error" id="authError"></div><div class="auth-note">Для работы с сервером укажи URL API в <code>config.js</code>. Пока сервер не подключён, экран входа не создаёт фальшивые аккаунты.</div></div>
+</div>
+<div class="app hidden" id="app">
+ <nav class="rail"><div class="logo mini">M</div><button class="railbtn active" data-view="chats" title="Чаты">▤</button><button class="railbtn" data-view="gifts" title="NFT-подарки">✧</button><button class="railbtn" data-view="market" title="Username-маркет">＠</button><button class="railbtn" data-view="settings" title="Настройки">⚙</button><button class="railbtn railbottom" id="logoutBtn" title="Выйти">⇥</button></nav>
+ <aside class="sidebar"><div class="sidehead"><div class="side-title"><h1 id="listTitle">Сообщения</h1><button class="iconbtn" id="newChatBtn">＋</button></div><input class="search" id="search" placeholder="⌕  Найти пользователя по @username"></div><div class="tabs"><button class="tab active" data-filter="all">Все</button><button class="tab" data-filter="unread">Непрочитанные</button></div><div class="chatlist" id="chatlist"><div class="empty">Войди, чтобы загрузить переписки</div></div><div class="sidefoot"><div class="avatar small" id="myAvatar">ME</div><div class="profileinfo"><strong id="myName">Мой профиль</strong><small id="myNumber">Member ID</small></div></div></aside>
+ <main class="main" id="main"><div class="welcome"><div class="biglogo">M</div><h2>Member, твой мир общения.</h2><p>Выбери собеседника или найди человека по username.</p><button class="primary" id="welcomeNew">＋ Новый чат</button></div></main>
+ <section class="panel hidden" id="featurePanel"></section>
+</div>
+<div class="toast" id="toast"></div><div class="modalback" id="modalback"><div class="modal" id="modal"></div></div>
+<script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script><script src="app.js"></script>
+</body></html>
